@@ -1,4 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Delius', cursive;
+  font-size: 1.5rem;
 }
+
+body {
+  font-family: 'Delius', cursive;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+form {
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+input, button {
+  border: 1px solid white;
+  background: none;
+  border-radius: 5px;
+  color: white;
+  padding: .5em;
+  transition: border 500ms;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 500ms;
+}
+
+button:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+input:valid {
+  border: 1px solid green;
+}
+
+input:valid {
+  border: 1px solid red;
+}
+
+input:focus {
+  border: 1px solid white;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 500ms;
+}
+
+input:focus::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
