@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Webpack Starter</title>
+    <title>Form Validation</title>
 </head>
 <body>
+    <h1>Fill in the form!</h1>
     <form>
-        <input type="text" placeholder="Email Address" class="email"/>
-        <input type="text" placeholder="Country" class="country"/>
-        <input type="text" placeholder="Zip Code" class="zipCode"/>
-        <input type="text" placeholder="Password" class="password"/>
-        <input type="text" placeholder="Confirm Password" class="confirmPassword"/>
+        <input required type="text" placeholder="Email Address" class="email"/>
+        <input required type="text" placeholder="Country" class="country"/>
+        <input required type="text" placeholder="Zip Code" class="zipCode"/>
+        <input required type="password" placeholder="Password" class="password"/>
+        <input required type="password" placeholder="Confirm Password" class="confirmPassword"/>
         <button class="btn">Check it!</button>
     </form>
+    <div class="highFiveModalBackdrop backdropHidden"></div>
+    <div class="highFiveModal hidden">
+        <p class="highFiveText">Nice Job!</p>
+        <img class="highFiveImg" />
+        <p class="highFiveSmallText">(click anywhere to close)</p>
+    </div>
 </body>
 </html>

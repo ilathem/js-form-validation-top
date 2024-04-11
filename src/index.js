@@ -1,6 +1,19 @@
 import './index.css';
 import { getCode, getName } from 'country-list';
 import { postcodeValidator } from 'postcode-validator';
+import highFive from './eevee-pikachu.gif';
+
+document.querySelector('form').style.zIndex = '2';
+
+document.querySelector('.highFiveImg').src = highFive;
+
+document.querySelector('.highFiveModal').addEventListener('click', () => {
+  document.querySelector('.highFiveModal').classList.add('hidden');
+  document
+    .querySelector('.highFiveModalBackdrop')
+    .classList.add('backdropHidden');
+  document.querySelector('form').style.zIndex = '2';
+});
 
 let data = {
   email: '',
@@ -53,7 +66,7 @@ const checkZip = (zip = '') => {
   } catch (exception) {
     errorMsg = exception.toString();
   }
-  console.log(zip)
+  console.log(zip);
   if (validate) {
     document.body.querySelector('.zipCode').setCustomValidity('');
     data.zip = zip;
@@ -91,6 +104,13 @@ const addListeners = () => {
     checkZip(e.target.value, document.body.querySelector('.country').value);
     e.target.reportValidity();
   });
+  document.body.querySelector('.password').addEventListener('input', (e) => {
+    checkPasswords(
+      e.target.value || '',
+      document.body.querySelector('.confirmPassword').value || ''
+    );
+    e.target.reportValidity();
+  });
   document.body
     .querySelector('.confirmPassword')
     .addEventListener('input', (e) => {
@@ -102,9 +122,19 @@ const addListeners = () => {
     });
   document.body.querySelector('button').addEventListener('click', (e) => {
     e.preventDefault();
-    document
-      .querySelectorAll('input')
-      .forEach((input) => input.reportValidity());
+    let passingScore = 0;
+    const inputList = document.querySelectorAll('input');
+    for (let i = inputList.length - 1; i >= 0; i--) {
+      if (inputList[i].reportValidity()) passingScore++;
+    }
+    if (passingScore === 5) {
+      document.querySelector('.highFiveModal').classList.remove('hidden');
+      document
+        .querySelector('.highFiveModalBackdrop')
+        .classList.remove('backdropHidden');
+      document.querySelector('form').style.zIndex = '-1';
+    }
+    console.log(passingScore);
     console.log(data);
   });
 };
