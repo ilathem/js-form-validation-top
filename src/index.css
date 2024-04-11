@@ -21,7 +21,7 @@ body {
 h1 {
   font-size: 2.5rem;
   font-weight: normal;
-  color:rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1em;
 }
 
@@ -33,12 +33,13 @@ form {
   flex-direction: column;
 }
 
-input, button {
+input,
+button {
   border: 1px solid white;
   background: none;
   border-radius: 5px;
   color: white;
-  padding: .5em;
+  padding: 0.5em;
   transition: border 500ms;
   outline: none;
 }
@@ -90,10 +91,9 @@ input:focus::placeholder {
   /* backdrop-filter: blur(10px); */
   text-align: center;
   position: absolute;
-  scale: 100%;
-  transition: all 500ms;
   user-select: none;
-  opacity: 1;
+  scale: 0;
+  opacity: 0;
 }
 
 .highFiveModalBackdrop {
@@ -104,21 +104,75 @@ input:focus::placeholder {
   height: 100vh;
   width: 100vw;
   backdrop-filter: blur(10px);
-  opacity: 1;
-  transition: all 500ms
-}
-
-.backdropHidden {
   opacity: 0;
 }
 
-.hidden {
-  opacity: 0;
-  scale: 0;
+.triggerShowModal {
+  animation-name: showModal;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+.triggerHideModal {
+  animation-name: hideModal;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+.triggerShowModalBackdrop {
+  animation-name: showModalBackdrop;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+.triggerHideModalBackdrop {
+  animation-name: hideModalBackdrop;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes showModal {
+  from {
+    opacity: 0;
+    scale: 0;
+  }
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+
+@keyframes hideModal {
+  from {
+    opacity: 1;
+    scale: 100%;
+  }
+  to {
+    opacity: 0;
+    scale: 0;
+  }
+}
+
+@keyframes showModalBackdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hideModalBackdrop {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .highFiveText {
-  z-index:1;
+  z-index: 1;
 }
 
 .highFiveImg {
@@ -127,6 +181,6 @@ input:focus::placeholder {
 
 .highFiveSmallText {
   z-index: 1;
-  font-size: .75rem;
+  font-size: 0.75rem;
   color: white;
 }

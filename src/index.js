@@ -7,11 +7,15 @@ document.querySelector('form').style.zIndex = '2';
 
 document.querySelector('.highFiveImg').src = highFive;
 
-document.querySelector('.highFiveModal').addEventListener('click', () => {
-  document.querySelector('.highFiveModal').classList.add('hidden');
+document.querySelector('#highFiveModal').addEventListener('click', () => {
   document
-    .querySelector('.highFiveModalBackdrop')
-    .classList.add('backdropHidden');
+    .querySelector('#highFiveModalBackdrop')
+    .classList.remove('triggerShowModalBackdrop');
+  document
+    .querySelector('#highFiveModalBackdrop')
+    .classList.add('triggerHideModalBackdrop');
+  document.querySelector('#highFiveModal').classList.remove('triggerShowModal');
+  document.querySelector('#highFiveModal').classList.add('triggerHideModal');
   document.querySelector('form').style.zIndex = '2';
 });
 
@@ -91,6 +95,8 @@ const checkPasswords = (pass1, pass2) => {
   }
 };
 
+const addModal = () => {};
+
 const addListeners = () => {
   document.body.querySelector('.email').addEventListener('input', (e) => {
     checkEmail(e.target.value);
@@ -128,10 +134,19 @@ const addListeners = () => {
       if (inputList[i].reportValidity()) passingScore++;
     }
     if (passingScore === 5) {
-      document.querySelector('.highFiveModal').classList.remove('hidden');
       document
-        .querySelector('.highFiveModalBackdrop')
-        .classList.remove('backdropHidden');
+        .querySelector('#highFiveModal')
+        .classList.remove('triggerHideModal');
+      document
+        .querySelector('#highFiveModal')
+        .classList.add('triggerShowModal');
+      document
+        .querySelector('#highFiveModalBackdrop')
+        .classList.remove('triggerHideModalBackdrop');
+      document
+        .querySelector('#highFiveModalBackdrop')
+        .classList.add('triggerShowModalBackdrop');
+
       document.querySelector('form').style.zIndex = '-1';
     }
     console.log(passingScore);
