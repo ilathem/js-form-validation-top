@@ -52,12 +52,13 @@ input:valid {
   border: 1px solid green;
 }
 
-input:valid {
+input:invalid {
   border: 1px solid red;
 }
 
 input:focus {
-  border: 1px solid white;
+  outline: 1px solid white;
+  outline-offset: 5px;
 }
 
 input::placeholder {
